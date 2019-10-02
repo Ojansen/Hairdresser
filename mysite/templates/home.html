@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block navright %}
+    {% if user.is_authenticated %}
+        <li>
+            <a href="{% url "detail" user %}">{{ user.first_name }}</a>
+            <div class="uk-navbar-dropdown" uk-dropdown="pos: top-right">
+                <ul class="uk-nav uk-navbar-dropdown-nav">
+                    {% if user.is_admin %}
+                        <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'logout' %}">logout</a></li>
+                </ul>
+            </div>
+        </li>
+    {% else %}
+        <li><a href="{% url 'login' %}">login</a></li>
+        <li><a href="{% url 'signup' %}">Signup</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="uk-child-width-expand@s uk-child-width-1-2@m uk-text-center" uk-grid>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">Item</div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">Item</div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">Item</div>
+    </div>
+</div>
+{% endblock %}
