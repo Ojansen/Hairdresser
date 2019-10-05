@@ -36,7 +36,7 @@ class Account(AbstractBaseUser):
     last_name = models.CharField(max_length=30)
     mobile_nr = models.IntegerField(null=True)
     address = models.CharField(max_length=60, null=True)
-    loyalty_points = models.IntegerField(null=True)
+    loyalty_points = models.IntegerField(null=True, default=0)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
     is_active = models.BooleanField(default=True)
@@ -48,7 +48,6 @@ class Account(AbstractBaseUser):
     REQUIRED_FIELDS = ['first_name', 'last_name']
 
     objects = MyAccountManager()
-
 
     def __str__(self):
         return self.first_name

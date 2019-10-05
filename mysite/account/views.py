@@ -26,5 +26,6 @@ class DetailView(generic.DetailView):
     template_name = 'account/details.html'
     login_url = 'login/'
 
-    def get(self, request, user):
+    def get(self, request):
+        user = Account.objects.get(pk=request.user.id)
         return render(request, 'account/details.html', {'user': user})

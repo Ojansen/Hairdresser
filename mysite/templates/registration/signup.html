@@ -2,11 +2,37 @@
 
 {% block title %}Sign Up{% endblock %}
 
+{% load static %}
+
+{% block style %}
+    <style>
+        body {
+            background-image: url("{% static 'img/signup_wallpaper.jpg' %}");
+            background-repeat:no-repeat;
+            background-size:cover;
+        }
+    </style>
+{% endblock %}
+
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">Sign up</button>
-  </form>
+<div class="uk-flex uk-flex-center">
+    <div class=" uk-card uk-card-default uk-card-body uk-margin-large-top">
+        <form method="post" class="uk-form-horizontal uk-width-1-1">
+            {% csrf_token %}
+            <h2 class="uk-margin-small">Signup</h2>
+            {% for field in form %}
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="{{ field.id_for_label}}">{{ field.label}}</label>
+                    <div class="uk-form-controls">
+                        <div class="uk-inline">
+                            <input class="uk-input" required {% if field.html_name != 'password' %}type="text" {% else %}type="password"{% endif %} name="{{ field.html_name }}" id="{{ field.id_for_label }}">
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" class="uk-button uk-button-default" style="background-color: green; color: white">Signup</button>
+            <p>If you already have an account <a href="{% url 'login' %}">login here</a></p>
+        </form>
+    </div>
+</div>
 {% endblock %}

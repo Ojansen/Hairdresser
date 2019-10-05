@@ -5,7 +5,7 @@
 {% block navright %}
     {% if user.is_authenticated %}
         <li>
-            <a href="{% url "detail" user %}">{{ user.first_name }}</a>
+            <a href="{% url "detail" %}">{{ user.first_name }} {{ user.last_name }}</a>
             <div class="uk-navbar-dropdown" uk-dropdown="pos: top-right">
                 <ul class="uk-nav uk-navbar-dropdown-nav">
                     {% if user.is_admin %}
@@ -22,15 +22,36 @@
 {% endblock %}
 
 {% block content %}
-<div class="uk-child-width-expand@s uk-child-width-1-2@m uk-text-center" uk-grid>
-    <div>
-        <div class="uk-card uk-card-default uk-card-body">Item</div>
+    <div class="uk-container uk-container-small">
+        <div class="uk-text-center" uk-grid>
+            <div class="uk-width-1-2@m">
+                <div class="uk-card uk-card-large uk-card-default uk-card-hover uk-card-body">
+                    {% for user in hairdressers %}
+                        {{ user.user_id.email }}
+                        {{ user.hairstyle_id.price }}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="uk-width-1-2@m">
+                <div class="uk-card uk-card-small uk-card-default uk-card-hover uk-card-body">
+                    <div class="uk-card-header">
+                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                            <div class="uk-width-expand">
+                                <h3 class="uk-card-title uk-margin-remove-bottom">Planned appointments</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-card-body">
+                        {% for item in orders %}
+                            {{ item.appointment_date }}
+                        {% endfor %}
+                    </div>
+                    <div class="uk-card-footer">
+                        <a href="#" class="uk-button uk-button-text">Plan appointments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div>
-        <div class="uk-card uk-card-default uk-card-body">Item</div>
-    </div>
-    <div>
-        <div class="uk-card uk-card-default uk-card-body">Item</div>
-    </div>
-</div>
+
 {% endblock %}

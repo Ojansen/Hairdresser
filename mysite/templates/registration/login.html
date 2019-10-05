@@ -1,5 +1,7 @@
 {% extends 'layout.html' %}
 
+{% block title %}Login{% endblock %}
+
 {% load static %}
 
 {% block style %}
@@ -11,8 +13,6 @@
         }
     </style>
 {% endblock %}
-
-{% block title %}Login{% endblock %}
 
 {% block content %}
 <div class="uk-flex uk-flex-center">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
             {% endfor %}
-            <button type="submit" class="uk-button uk-button-default">Login</button>
+            <button type="submit" class="uk-button uk-button-default" style="background-color: green; color: white">Login</button>
             <p>If you don't have an account <a href="{% url 'signup' %}">signup here</a></p>
         </form>
     </div>

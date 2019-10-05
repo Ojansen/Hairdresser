@@ -25,7 +25,7 @@ SECRET_KEY = 'h5-ns#yv%=+mta9e)44l1q8fn)0s5#@w8$em3vcjz$s$1x_luo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'account.apps.AccountConfig',
     'order.apps.OrderConfig',
+    'hairdresser.apps.HairdresserConfig',
 ]
 
 MIDDLEWARE = [
@@ -73,8 +75,8 @@ STATICFILES_DIRS = [
     "static/"
 ]
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'dashboard'
+LOGOUT_REDIRECT_URL = 'dashboard'
 
 AUTH_USER_MODEL = 'account.Account'
 

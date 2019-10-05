@@ -1,8 +1,39 @@
 {% extends 'layout.html' %}
 
-{% block title %}Login{% endblock %}
+{% block title %}Account{% endblock %}
 
 {% block content %}
-    <h1>Account details</h1>
-    {{ user }}
+    <div class="uk-container uk-container-small">
+        <div class="uk-card uk-card-default uk-card-large uk-card-body">
+            <h1>Account details</h1>
+            <table class="uk-table uk-table-divider uk-table-responsive">
+                <tbody>
+                    <tr>
+                        <td><b>Name</b></td>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td>{{ user.email }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Address</b></td>
+                        <td>{{ user.address }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Mobile number</b></td>
+                        <td>{{ user.address }}</td>
+                    </tr>
+                    <tr>
+                        <td><b>Loyalty points</b></td>
+                        <td>{{ user.loyalty_points }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p uk-margin>
+                <a class="uk-button uk-button-primary" href="#">Edit</a>
+                <a class="uk-button uk-button-danger" href="">Delete</a>
+            </p>
+        </div>
+    </div>
 {% endblock %}
