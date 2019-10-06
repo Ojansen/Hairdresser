@@ -25,7 +25,7 @@ SECRET_KEY = 'h5-ns#yv%=+mta9e)44l1q8fn)0s5#@w8$em3vcjz$s$1x_luo'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition

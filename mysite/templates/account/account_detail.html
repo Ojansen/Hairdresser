@@ -4,7 +4,7 @@
 
 {% block content %}
     <div class="uk-container uk-container-small">
-        <div class="uk-card uk-card-default uk-card-large uk-card-body">
+        <div class="uk-card uk-card-default uk-box-shadow-xlarge uk-card-large uk-card-body">
             <h1>Account details</h1>
             <table class="uk-table uk-table-divider uk-table-responsive">
                 <tbody>
@@ -22,7 +22,7 @@
                     </tr>
                     <tr>
                         <td><b>Mobile number</b></td>
-                        <td>{{ user.address }}</td>
+                        <td>{{ user.mobile_nr }}</td>
                     </tr>
                     <tr>
                         <td><b>Loyalty points</b></td>
@@ -31,9 +31,22 @@
                 </tbody>
             </table>
             <p uk-margin>
-                <a class="uk-button uk-button-primary" href="#">Edit</a>
-                <a class="uk-button uk-button-danger" href="">Delete</a>
+                <a class="uk-button uk-button-primary" href="{% url 'edit_account' user.pk %}">Edit</a>
+                <button uk-toggle="target: #delete" type="button" class="uk-button uk-button-danger">Delete</button>
             </p>
+        </div>
+    </div>
+
+    <div id="delete" uk-modal>
+        <div class="uk-modal-dialog uk-modal-body">
+            <h2 class="uk-modal-title">Delete account</h2>
+            <p>Are you sure you want to delete your account <b>this change in irreversible</b></p>
+            <form method="post" action="{% url 'account_delete' user.pk %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" value="Delete"></button>
+            </form>
+            <button class="uk-modal-close uk-button uk-button-primary" type="button">Cancel</button>
         </div>
     </div>
 {% endblock %}

@@ -23,9 +23,23 @@ class SignUp(generic.edit.CreateView):
 
 class DetailView(generic.DetailView):
     model = Account
-    template_name = 'account/details.html'
+    template_name = 'account/account_detail.html'
     login_url = 'login/'
 
     def get(self, request):
         user = Account.objects.get(pk=request.user.id)
-        return render(request, 'account/details.html', {'user': user})
+        return render(request, 'account/account_detail.html', {'user': user})
+
+
+class EditAccountView(generic.UpdateView):
+    model = Account
+    template_name_suffix = '_edit'
+    fields = ['first_name', 'last_name', 'email', 'address', 'mobile_nr']
+
+
+class AccountDelete(generic.DetailView):
+    model = Account
+    success_url = reverse_lazy('signup')
+
+    def post(self, request):
+        pass

@@ -5,7 +5,7 @@
 {% block navright %}
     {% if user.is_authenticated %}
         <li>
-            <a href="{% url "detail" %}">{{ user.first_name }} {{ user.last_name }}</a>
+            <a href="{% url "account_detail" %}">{{ user.first_name }} {{ user.last_name }}</a>
             <div class="uk-navbar-dropdown" uk-dropdown="pos: top-right">
                 <ul class="uk-nav uk-navbar-dropdown-nav">
                     {% if user.is_admin %}
@@ -22,13 +22,13 @@
 {% endblock %}
 
 {% block content %}
-    <div class="uk-container uk-container-small">
-        <div class="uk-text-center" uk-grid>
+    <div class="uk-container uk-container-large">
+        <div class="uk-text-center uk-grid-match" uk-grid>
             <div class="uk-width-1-2@m">
                 <div class="uk-card uk-card-large uk-card-default uk-card-hover uk-card-body">
                     {% for user in hairdressers %}
                         {{ user.user_id.email }}
-                        {{ user.hairstyle_id.price }}
+                        {{ user.hairstyle_id }}
                     {% endfor %}
                 </div>
             </div>
@@ -41,14 +41,48 @@
                             </div>
                         </div>
                     </div>
-                    <div class="uk-card-body">
-                        {% for item in orders %}
-                            {{ item.appointment_date }}
-                        {% endfor %}
+                    <div class="uk-card-body uk-overflow-auto">
+                        <table class="uk-table uk-table-middle uk-table-divider">
+                            <thead>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>Description</td>
+                                    <td>Actions</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in orders %}
+                                    <tr>
+                                        <td>{{ item.appointment_date }}</td>
+                                        <td>{{ item.description }}</td>
+                                        <td>
+                                            <button type="button" class="uk-button uk-button-primary uk-button-small">Annuleren</button>
+                                            <button type="button" class="uk-button uk-button-primary uk-button-small">Annuleren</button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
                     </div>
                     <div class="uk-card-footer">
-                        <a href="#" class="uk-button uk-button-text">Plan appointments</a>
+                        <a href="#" class="uk-button uk-button-text">Plan appointment</a>
                     </div>
+                </div>
+            </div>
+            <div class="uk-width-1-2@m">
+                <div class="uk-card uk-card-large uk-card-default uk-card-hover uk-card-body">
+                    <div class="uk-card-header">
+                        <div class="uk-grid-small uk-flex-middle" uk-grid>
+                            <div class="uk-width-expand">
+                                <h3 class="uk-card-title uk-margin-remove-bottom">Hairdresser info</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus egestas turpis pretium lorem semper, eu aliquet eros suscipit. Suspendisse tincidunt efficitur sem vestibulum imperdiet. Etiam blandit, magna quis porttitor suscipit, erat augue scelerisque mi, a iaculis sem eros eu leo. Donec gravida sodales tellus, sed varius turpis. Vestibulum sed dui justo. Praesent non urna rutrum, blandit mauris ut, ornare lorem. Nunc accumsan luctus tortor, vitae porta dolor imperdiet malesuada. Ut at odio neque.
+
+Ut eu lacinia sapien. Aliquam in vestibulum lorem, eu lacinia nulla. Phasellus pulvinar ex eget lacus sodales, ac porta enim feugiat. Aenean at imperdiet quam, eu fermentum lacus. Maecenas ac massa blandit, blandit elit id, interdum purus. Suspendisse vulputate eleifend elit vitae vehicula. Praesent ultricies nisi eu tincidunt efficitur. Curabitur ac leo eget elit condimentum consequat in nec diam. Phasellus rhoncus lectus malesuada nisl tincidunt feugiat.
+                    </p>
                 </div>
             </div>
         </div>

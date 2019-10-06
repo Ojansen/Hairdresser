@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+
+{% block title %}Edit account{% endblock %}
+
+{% block content %}
+    <div class="uk-container uk-container-small">
+        <div class="uk-card uk-card-default uk-box-shadow-xlarge uk-card-large uk-card-body">
+            <h1>Edit account</h1>
+            <form method="post">
+                {% csrf_token %}
+                <table class="uk-table uk-table-divider uk-table-responsive">
+                    <tbody>
+                        <tr>
+                            <td><b>{{ form.first_name.label }}</b></td>
+                            <td><input class="uk-input uk-form-small" required value="{{ user.first_name }}"
+                                       type="text" name="{{ form.first_name.html_name }}" id="{{ form.first_name.id_for_label }}"></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ form.last_name.label }}</b></td>
+                            <td><input class="uk-input uk-form-small" required value="{{ user.last_name }}"
+                                       type="text" name="{{ form.last_name.html_name }}" id="{{ form.last_name.id_for_label }}"></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ form.email.label }}</b></td>
+                            <td><input class="uk-input uk-form-small" required value="{{ user.email }}"
+                                       type="text" name="{{ form.email.html_name }}" id="{{ form.email.id_for_label }}"></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ form.address.label }}</b></td>
+                            <td><input class="uk-input uk-form-small" required value="{{ user.address }}"
+                                       type="text" name="{{ form.address.html_name }}" id="{{ form.address.id_for_label }}"></td>
+                        </tr>
+                        <tr>
+                            <td><b>{{ form.mobile_nr.label }}</b></td>
+                            <td><input class="uk-input uk-form-small" required value="{{ user.mobile_nr }}"
+                                       type="text" name="{{ form.mobile_nr.html_name }}" id="{{ form.mobile_nr.id_for_label }}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" class="uk-button uk-button-primary">Update</button>
+                <button type="reset" class="uk-button">Reset</button>
+                <a href="{% url 'account_detail' %}"  class="uk-button uk-button-default">Cancel</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

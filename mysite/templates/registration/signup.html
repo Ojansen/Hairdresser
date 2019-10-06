@@ -4,19 +4,9 @@
 
 {% load static %}
 
-{% block style %}
-    <style>
-        body {
-            background-image: url("{% static 'img/signup_wallpaper.jpg' %}");
-            background-repeat:no-repeat;
-            background-size:cover;
-        }
-    </style>
-{% endblock %}
-
 {% block content %}
 <div class="uk-flex uk-flex-center">
-    <div class=" uk-card uk-card-default uk-card-body uk-margin-large-top">
+    <div class=" uk-card uk-card-default uk-card-body uk-box-shadow-xlarge uk-margin-large-top">
         <form method="post" class="uk-form-horizontal uk-width-1-1">
             {% csrf_token %}
             <h2 class="uk-margin-small">Signup</h2>
