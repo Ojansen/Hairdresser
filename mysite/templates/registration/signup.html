@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="uk-flex uk-flex-center">
-    <div class=" uk-card uk-card-default uk-card-body uk-box-shadow-xlarge uk-margin-large-top">
+    <div class=" uk-card uk-card-default uk-card-body uk-box-shadow-xlarge">
         <form method="post" class="uk-form-horizontal uk-width-1-1">
             {% csrf_token %}
             <h2 class="uk-margin-small">Signup</h2>
@@ -15,7 +15,7 @@
                     <label class="uk-form-label" for="{{ field.id_for_label}}">{{ field.label}}</label>
                     <div class="uk-form-controls">
                         <div class="uk-inline">
-                            <input class="uk-input" required {% if field.html_name != 'password' %}type="text" {% else %}type="password"{% endif %} name="{{ field.html_name }}" id="{{ field.id_for_label }}">
+                            {{field}}
                         </div>
                     </div>
                 </div>

@@ -9,3 +9,6 @@ class Order(models.Model):
     description = models.TextField()
     user_id = models.ManyToManyField(Account)
     hairdresser_id = models.OneToOneField(Hairdresser, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.description
