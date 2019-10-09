@@ -6,8 +6,8 @@ html, body{
 }
 body {
     height: 100vh;
-    background: rgb(180,122,255);
-    background: linear-gradient(120deg, rgba(180,122,255,1) 0%, rgba(117,117,255,1) 33%, rgba(31,172,237,1) 100%);
+    background: rgb(180,122,255) !important;
+    background: linear-gradient(120deg, rgba(180,122,255,1) 0%, rgba(117,117,255,1) 33%, rgba(31,172,237,1) 100%) !important;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
