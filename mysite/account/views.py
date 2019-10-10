@@ -1,8 +1,8 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
+from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 from .models import Account, MyAccountManager
 from .admin import UserCreationForm
@@ -36,9 +36,9 @@ class EditAccountView(generic.UpdateView):
     fields = ['first_name', 'last_name', 'email', 'address', 'mobile_nr']
 
 
-class AccountDelete(generic.DetailView):
-    model = Account
-    success_url = reverse_lazy('signup')
+@require_http_methods(["POST"])
+def account_delete(request, pk):
+    user = Account.objects.get(pk=pk)
+    user.delete()
+    return reverse_lazy('signup')
 
-    def post(self, request):
-        pass

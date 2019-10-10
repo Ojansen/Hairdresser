@@ -63,7 +63,4 @@ class Account(AbstractBaseUser):
         return reverse('account_detail')
 
     class Meta:
-        permissions = [
-            ("change_task_status", "Can change the status of tasks"),
-            ("close_task", "Can remove a task by setting its status as closed"),
-        ]
+        pass

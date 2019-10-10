@@ -80,6 +80,8 @@ LOGOUT_REDIRECT_URL = 'dashboard'
 
 AUTH_USER_MODEL = 'account.Account'
 
+DATETIME_FORMAT = '%d-%m-%Y'
+
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 

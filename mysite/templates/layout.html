@@ -22,13 +22,34 @@
     <nav class="uk-navbar-container uk-margin-medium-bottom" uk-navbar>
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
+                {% if user.is_authenticated  %}
                 <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                {% endif %}
             </ul>
         </div>
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
                 {% block navright %}
                 {% endblock %}
+
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="#" class="active">{{ user.first_name }} {{ user.last_name }}</a>
+                    <div class="uk-navbar-dropdown" uk-dropdown="pos: top-right">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            {% if user.is_admin %}
+                                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                            {% endif %}
+                            <li><a href="{% url "account_detail" %}">Account</a></li>
+                            <li><a href="{% url 'logout' %}">logout</a></li>
+                        </ul>
+                    </div>
+                </li>
+            {% else %}
+                <li><a href="{% url 'login' %}">login</a></li>
+                <li><a href="{% url 'signup' %}">Signup</a></li>
+            {% endif %}
+
             </ul>
         </div>
     </nav>

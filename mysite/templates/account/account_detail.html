@@ -32,7 +32,8 @@
             </table>
             <p uk-margin>
                 <a class="uk-button uk-button-primary" href="{% url 'edit_account' user.pk %}">Edit</a>
-                <button uk-toggle="target: #delete" type="button" class="uk-button uk-button-danger">Delete</button>
+{#                <a class="uk-button uk-button-danger" href="{% url 'account_delete' user.pk %}">Delete</a>#}
+                <button uk-toggle="target: #delete"  class="uk-button uk-button-danger" type="button">Delete</button>
             </p>
         </div>
     </div>
@@ -44,9 +45,11 @@
             <form method="post" action="{% url 'account_delete' user.pk %}">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" value="Delete"></button>
+                <p class="uk-text-right">
+                    <button type="submit" class="uk-button uk-button-danger">Delete</button>
+                    <button class="uk-modal-close uk-button uk-button-primary" type="button">Cancel</button>
+                </p>
             </form>
-            <button class="uk-modal-close uk-button uk-button-primary" type="button">Cancel</button>
         </div>
     </div>
 {% endblock %}

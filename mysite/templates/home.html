@@ -3,22 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block navright %}
-    {% if user.is_authenticated %}
-        <li>
-            <a href="{% url "account_detail" %}">{{ user.first_name }} {{ user.last_name }}</a>
-            <div class="uk-navbar-dropdown" uk-dropdown="pos: top-right">
-                <ul class="uk-nav uk-navbar-dropdown-nav">
-                    {% if user.is_admin %}
-                        <li><a href="{% url 'admin:index' %}">Admin</a></li>
-                    {% endif %}
-                    <li><a href="{% url 'logout' %}">logout</a></li>
-                </ul>
-            </div>
-        </li>
-    {% else %}
-        <li><a href="{% url 'login' %}">login</a></li>
-        <li><a href="{% url 'signup' %}">Signup</a></li>
-    {% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -45,7 +30,7 @@
                             <tbody>
                                 {% for item in orders %}
                                     <tr>
-                                        <td>{{ item.appointment_date }}</td>
+                                        <td>{{ item.appointment_date }} {{ item.get_appointment_time_display }}</td>
                                         <td>{{ item.description }}</td>
                                         <td>
                                             <button type="button" class="uk-button uk-button-primary uk-button-small">Annuleren</button>
@@ -57,7 +42,7 @@
                         </table>
                     </div>
                     <div class="uk-card-footer">
-                        <a href="#" class="uk-button uk-button-text">Plan appointment</a>
+                        <a href="{% url 'new_order' %}" class="uk-button uk-button-text">Plan appointment</a>
                     </div>
                 </div>
             </div>
