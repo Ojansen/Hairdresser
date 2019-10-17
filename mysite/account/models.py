@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Group
 
 
 class MyAccountManager(BaseUserManager):
@@ -38,6 +38,7 @@ class Account(AbstractBaseUser):
     mobile_nr = models.IntegerField(null=True)
     address = models.CharField(max_length=60, null=True)
     loyalty_points = models.IntegerField(null=True, default=0)
+    groups = models.ManyToManyField(Group)
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
     last_login = models.DateTimeField(verbose_name='last login', auto_now=True)
     is_active = models.BooleanField(default=True)

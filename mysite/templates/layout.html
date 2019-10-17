@@ -37,7 +37,7 @@
                     <a href="#" class="active">{{ user.first_name }} {{ user.last_name }}</a>
                     <div class="uk-navbar-dropdown" uk-dropdown="pos: top-right">
                         <ul class="uk-nav uk-navbar-dropdown-nav">
-                            {% if user.is_admin %}
+                            {% if user.is_admin or user.is_staff %}
                                 <li><a href="{% url 'admin:index' %}">Admin</a></li>
                             {% endif %}
                             <li><a href="{% url "account_detail" %}">Account</a></li>

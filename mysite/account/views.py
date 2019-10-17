@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy, reverse
 from django.views import generic
 from .models import Account, MyAccountManager
@@ -39,6 +39,8 @@ class EditAccountView(generic.UpdateView):
 @require_http_methods(["POST"])
 def account_delete(request, pk):
     user = Account.objects.get(pk=pk)
-    user.delete()
-    return reverse_lazy('signup')
-
+    if user.check_password(request.POST.get('password')):
+        user.delete()
+        return redirect('/')
+    else:
+        return render(request, 'account/account_detail.html', {'user': user})

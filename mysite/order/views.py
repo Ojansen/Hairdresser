@@ -28,10 +28,3 @@ class NewOrderView(generic.CreateView):
     form_class = OrderCreateForm
     template_name_suffix = '_new'
     success_url = 'dashboard'
-
-    def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        form.user_id = Account.pk
-        form.save()
-        return super().form_valid(form)
