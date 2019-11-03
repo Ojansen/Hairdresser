@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django import forms
 from django.views import generic
 from .models import Order
-from account.models import Account
+from profile.models import Profile
 from hairdresser.models import Hairdresser, Hairstyle
 
 

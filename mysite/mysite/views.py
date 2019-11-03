@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from account.models import Account
+from profile.models import Profile
 from order.models import Order
 from hairdresser.models import Hairdresser
 from django.shortcuts import render
@@ -9,8 +9,8 @@ from django.views import generic
 
 
 def dashboard(request):
-    user = Account.objects.get(pk=request.user.id)
-    users = Account.objects.all()
+    user = Profile.objects.get(pk=request.user.id)
+    users = Profile.objects.all()
     hairdressers = Hairdresser.objects.all()
     orders = Order.objects.filter(user_id=user.pk)
 

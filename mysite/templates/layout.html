@@ -40,14 +40,14 @@
                             {% if user.is_admin or user.is_staff %}
                                 <li><a href="{% url 'admin:index' %}">Admin</a></li>
                             {% endif %}
-                            <li><a href="{% url "account_detail" %}">Account</a></li>
+                            <li><a href="{% url "profile:profile-detail" user %}">Account</a></li>
                             <li><a href="{% url 'logout' %}">logout</a></li>
                         </ul>
                     </div>
                 </li>
             {% else %}
                 <li><a href="{% url 'login' %}">login</a></li>
-                <li><a href="{% url 'signup' %}">Signup</a></li>
+                <li><a href="{% url 'profile:register' %}">Register</a></li>
             {% endif %}
 
             </ul>

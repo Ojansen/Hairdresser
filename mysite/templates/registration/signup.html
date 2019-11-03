@@ -9,7 +9,7 @@
     <div class=" uk-card uk-card-default uk-card-body uk-box-shadow-xlarge">
         <form method="post" class="uk-form-horizontal uk-width-1-1">
             {% csrf_token %}
-            <h2 class="uk-margin-small">Signup</h2>
+            <h2 class="uk-margin-small">Register</h2>
             {% for field in form %}
                 <div class="uk-margin">
                     <label class="uk-form-label" for="{{ field.id_for_label}}">{{ field.label}}</label>
@@ -20,7 +20,7 @@
                     </div>
                 </div>
             {% endfor %}
-            <button type="submit" class="uk-button uk-button-default" style="background-color: green; color: white">Signup</button>
+            <button type="submit" class="uk-button uk-button-default" style="background-color: green; color: white">Register</button>
             <p>If you already have an account <a href="{% url 'login' %}">login here</a></p>
         </form>
     </div>

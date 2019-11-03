@@ -37,8 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'account.apps.AccountConfig',
+    'profile.apps.ProfileConfig',
     'order.apps.OrderConfig',
     'hairdresser.apps.HairdresserConfig',
 ]
@@ -78,7 +77,7 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = 'dashboard'
 LOGOUT_REDIRECT_URL = 'dashboard'
 
-AUTH_USER_MODEL = 'account.Account'
+AUTH_USER_MODEL = 'profile.Profile'
 
 DATETIME_FORMAT = '%d-%m-%Y'
 

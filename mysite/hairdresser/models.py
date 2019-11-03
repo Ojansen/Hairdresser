@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import Account
+from profile.models import Profile
 
 
 # Create your models here.
@@ -19,7 +19,7 @@ class Hairstyle(models.Model):
 class Hairdresser(models.Model):
     photo = models.ImageField(upload_to='static/img/hairdresser')
     user_id = models.OneToOneField(
-        Account,
+        Profile,
         on_delete=models.CASCADE,
     )
     hairstyle_id = models.ManyToManyField(Hairstyle)

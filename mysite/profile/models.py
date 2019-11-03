@@ -30,7 +30,7 @@ class MyAccountManager(BaseUserManager):
         return user
 
 
-class Account(AbstractBaseUser):
+class Profile(AbstractBaseUser):
     username = None
     email = models.EmailField(max_length=60, unique=True, verbose_name='email')
     first_name = models.CharField(max_length=30)
@@ -61,7 +61,7 @@ class Account(AbstractBaseUser):
         return True
 
     def get_absolute_url(self):
-        return reverse('account_detail')
+        return reverse('profile:profile-detail')
 
     class Meta:
         pass

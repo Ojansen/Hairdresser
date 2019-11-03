@@ -1,5 +1,5 @@
 from django.db import models
-from account.models import Account
+from profile.models import Profile
 from hairdresser.models import Hairdresser
 
 
@@ -16,7 +16,7 @@ class Order(models.Model):
     )
     appointment_time = models.CharField(max_length=1, choices=TIME_CHOICES)
     description = models.TextField()
-    user_id = models.ManyToManyField(Account)
+    user_id = models.ManyToManyField(Profile)
     hairdresser_id = models.ManyToManyField(Hairdresser)
 
     def __int__(self):

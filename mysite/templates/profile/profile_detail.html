@@ -31,8 +31,8 @@
                 </tbody>
             </table>
             <p uk-margin>
-                <a class="uk-button uk-button-primary" href="{% url 'edit_account' user.pk %}">Edit</a>
-{#                <a class="uk-button uk-button-danger" href="{% url 'account_delete' user.pk %}">Delete</a>#}
+                <a class="uk-button uk-button-primary" href="{% url 'profile:profile-edit' user.pk %}">Edit</a>
+{#                <a class="uk-button uk-button-danger" href="{% url 'profile:profile-delete' user.pk %}">Delete</a>#}
                 <button uk-toggle="target: #delete"  class="uk-button uk-button-danger" type="button">Delete</button>
             </p>
         </div>
@@ -42,7 +42,7 @@
         <div class="uk-modal-dialog uk-modal-body">
             <h2 class="uk-modal-title">Delete account</h2>
             <p>Are you sure you want to delete your account <b>this change in irreversible</b></p>
-            <form method="post" action="{% url 'account_delete' user.pk %}">
+            <form method="post" action="{% url 'profile:profile-delete' user.pk %}">
                 {% csrf_token %}
                 {{ form }}
                 <label>Confirm password</label>
